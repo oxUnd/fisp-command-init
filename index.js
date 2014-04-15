@@ -11,7 +11,7 @@ exports.desc = 'A awesome scaffold of fis';
 exports.register = function(commander) {
     commander
         .option('-s, --scaffold <scaffold>', '', String, 'pc')
-        .option('-n, --name <name>', 'module name, widget name', String, '')
+        .option('-d, --dir <name>', 'create to dir', require('path').resolve, '')
         .option('--with-plugin', 'if create a module, whether include `plugin`', Boolean, false)
         .action(function () {
             var args = Array.prototype.slice.call(arguments);
