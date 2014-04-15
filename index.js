@@ -11,7 +11,7 @@ exports.desc = 'A awesome scaffold of fis';
 exports.register = function(commander) {
     commander
         .option('-s, --scaffold <scaffold>', '', String, 'pc')
-        .option('-d, --dir <name>', 'create to dir', require('path').resolve, '')
+        .option('-d, --dir <name>', 'create to dir', require('path').resolve, process.cwd())
         .option('--with-plugin', 'if create a module, whether include `plugin`', Boolean, false)
         .action(function () {
             var args = Array.prototype.slice.call(arguments);
@@ -26,6 +26,9 @@ exports.register = function(commander) {
                     break;
                 case 'widget':
                     generator_handle.widget();
+                    break;
+                default:
+                    fis.scaffold.download(cmd, options.dir);
                     break;
             }
         });
