@@ -9,42 +9,32 @@ fis.scaffold = require('./lib/scaffold.js');
 exports.name = 'scf';
 exports.desc = 'A awesome scaffold of fis';
 exports.register = function(commander) {
-    var info = commander.parse(process.argv);
-    var argv = info.args;
+    commander
+        .option('-s, --scaffold <scaffold>', '', String, 'pc')
+        .option('-n, --name <name>', 'module name, widget name', String, '')
+        .option('--with-plugin', 'if create a module, whether include `plugin`', Boolean, false)
+        .action(function () {
+            var args = Array.prototype.slice.call(arguments);
+            var options = args.pop();
+            var cmd = args.shift();
 
-    var command = argv[1];
+            var generator_handle = fis.require('scaffold', options.scaffold)(options);
 
-    function outputHelp() {
-        console.log(
-            'Please choose a generator below.\n\n'+
-            'pc\n'+
-            '  pc:module\n'+
-            '  pc:widget\n'
-        );
-    }
+            switch(cmd) {
+                case 'module':
+                    generator_handle.module();
+                    break;
+                case 'widget':
+                    generator_handle.widget();
+                    break;
+            }
+        });
 
-    if (fis.util.is(command, 'String')) {
-        //scf module
-        //scf specail:module
-        var p = command.indexOf(':');
-        var type = '';
-        var help = false;
-        if (p != -1) {
-            type = command.substr(p+1);
-            command = command.substr(0, p);
-        } else {
-            help = true;
-        }
+    commander
+        .command('module')
+        .description('create a module');
 
-        var scaffold = fis.require('scaffold', command);
-
-        if (help) {
-            console.log(scaffold.help());
-        } else {
-            scaffold(type, process.argv);
-        }
-
-    } else {
-        outputHelp();
-    }
+    commander
+        .command('widget')
+        .description('create a widget');        
 };
