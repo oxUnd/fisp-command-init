@@ -22,7 +22,7 @@ exports.register = function(commander) {
             var options = args.pop();
             var cmd = args.shift();
 
-            var generator_handle = fis.require('scaffold', options.scaffold)(options);
+            var generator_handle = require('fis-scaffold-' + options.scaffold.trim())(options);
 
             switch(cmd) {
                 case 'module':

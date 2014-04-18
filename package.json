@@ -1,0 +1,29 @@
+{
+  "name": "fis-command-init",
+  "version": "0.0.4",
+  "description": "scaffold",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xiangshouding/fis-command-scf.git"
+  },
+  "keywords": [
+    "fis",
+    "scaffold",
+    "fis-plus"
+  ],
+  "author": "fansekey",
+  "license": "MIT",
+  "dependencies": {
+      "fis-repo-client": "*",
+      "fis-scaffold-pc": "*",
+      "prompt": "*"
+  },
+  "bugs": {
+    "url": "https://github.com/xiangshouding/fis-command-scf/issues"
+  },
+  "homepage": "https://github.com/xiangshouding/fis-command-scf"
+}
