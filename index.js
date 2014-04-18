@@ -97,7 +97,7 @@ function get_reqs(type, reqs) {
     var requires = [];
 
     for (var i = 0, len = reqs.length; i < len; i++) {
-        requires.push('fis-'+type+'-'+reqs[i]);
+        requires.push('fis-'+type+'-'+reqs[i].trim());
     }
 
     return requires;
