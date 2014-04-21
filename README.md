@@ -7,6 +7,7 @@
 
 #### 基本用法
 ```bash
+$ fis init -h
   Usage: init <command> [options]
 
   Commands:
