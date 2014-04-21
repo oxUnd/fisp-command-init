@@ -17,26 +17,34 @@ exports.register = function(commander) {
         .option('-s, --scaffold <scaffold>', '', String, 'pc')
         .option('-d, --dir <name>', 'create to dir', require('path').resolve, process.cwd())
         .option('--with-plugin', 'if create a module, whether include `plugin`', Boolean, false)
+        .option('--repos <url>', 'repository', String, 'http://lightjs.duapp.com')
         .action(function () {
             var args = Array.prototype.slice.call(arguments);
             var options = args.pop();
             var cmd = args.shift();
 
-            var generator_handle = require('fis-scaffold-' + options.scaffold.trim())(options);
+            var scaffold = require('fis-scaffold-' + options.scaffold.trim())(options);
 
             switch(cmd) {
                 case 'module':
-                    generator_handle.module();
+                    scaffold.module();
                     break;
                 case 'widget':
-                    generator_handle.widget();
+                    scaffold.widget();
                     break;
                 default:
                     if (typeof(cmd) == 'undefined') {
                         init_env();
                         return;
                     }
-                    fis.scaffold.download(cmd, options.dir);
+                    
+                    if (scaffold.download) {
+                        //脚手架不用lights平台
+                        scaffold.download(cmd, options);
+                    } else {
+                        fis.scaffold.download(cmd, options.dir, {url: options.repos});
+                    }
+
                     break;
             }
         });
