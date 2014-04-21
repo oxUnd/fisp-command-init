@@ -7,9 +7,7 @@
 
 #### 基本用法
 ```bash
-$ fis init -h
-
-  Usage: init [options] [command]
+  Usage: init <command> [options]
 
   Commands:
 
@@ -22,6 +20,7 @@ $ fis init -h
     -s, --scaffold <scaffold>
     -d, --dir <name>           create to dir
     --with-plugin              if create a module, whether include `plugin`
+    --repos <url>              repository
 ```
 
 如上，脚手架支持创建一个模块（module）和widget（widget），其使用方法是；
@@ -133,10 +132,18 @@ FIS提供了包组件管理平台lights，你可以方便的把包发不到light
  */
 fis.scaffold.downlaod('组件名', dist, options, callback);
 ```
+下载完成以后，需要呼出交互界面替换全局变量的接口；
+
+```javascript
+/**
+ * dir 下载组件存放的文件夹
+ */
+fis.scaffold.prompt(dir);
+```
 
 ###### 制作插件
 
-插件需要放到npm上，插件命名规范`fis-scaffold-<插件名>`。
+插件需要放到npm上，插件命名规范`fis-scaffold-<插件名>`。具体可参考[fis-scaffold-pc](/xiangshouding/fis-scaffold-pc)
 
 插件接口:
 
