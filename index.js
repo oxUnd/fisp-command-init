@@ -11,6 +11,7 @@ var path = require('path');
 fis.scaffold = require('./lib/scaffold.js');
 
 exports.name = 'init';
+exports.usage = '<command> [options]';
 exports.desc = 'A awesome scaffold of fis';
 exports.register = function(commander) {
     commander
