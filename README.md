@@ -145,7 +145,7 @@ fis.scaffold.prompt(dir);
 
 ###### 制作插件
 
-插件需要放到npm上，插件命名规范`fis-scaffold-<插件名>`。具体可参考[fis-scaffold-pc](/xiangshouding/fis-scaffold-pc)
+插件需要放到npm上，插件命名规范`fis-scaffold-<插件名>`。具体可参考[fis-scaffold-pc](https://github.com/xiangshouding/fis-scaffold-pc)
 
 插件接口:
 
