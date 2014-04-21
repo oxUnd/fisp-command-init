@@ -3,9 +3,8 @@
  */
 
 'use strict';
-var os = require('os');
-var spawn = require('child_process').spawn;
 
+var spawn = require('child_process').spawn;
 var path = require('path');
 
 fis.scaffold = require('./lib/scaffold.js');
@@ -135,7 +134,7 @@ function get_conf() {
 
 function npm_install(comp) {
 
-    var cmd = os.platform == 'win32' ? 'npm.cmd' : 'npm';
+    var cmd = process.platform == 'win32' ? 'npm.cmd' : 'npm';
 
     var npm = spawn(cmd, ['install', comp, '-g'], {detach: true});
 

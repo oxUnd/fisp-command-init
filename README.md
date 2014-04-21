@@ -6,6 +6,7 @@
 ### 使用方法
 
 #### 基本用法
+
 ```bash
 $ fis init -h
   Usage: init <command> [options]
