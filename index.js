@@ -18,10 +18,17 @@ exports.register = function(commander) {
         .option('-d, --dir <name>', 'create to dir', require('path').resolve, process.cwd())
         .option('--with-plugin', 'if create a module, whether include `plugin`', Boolean, false)
         .option('--repos <url>', 'repository', String, 'http://lightjs.duapp.com')
+        .option('--verbose', 'output verbose help', Boolean, false)
         .action(function () {
+
             var args = Array.prototype.slice.call(arguments);
             var options = args.pop();
             var cmd = args.shift();
+
+            if (options.verbose) {
+                fis.log.level = fis.log.L_ALL;
+                fis.log.throw = true;
+            }
 
             var scaffold = require('fis-scaffold-' + options.scaffold.trim())(options);
 
