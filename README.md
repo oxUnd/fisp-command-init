@@ -101,17 +101,18 @@ $ fis init
 那就创建这些文件，并完善；
 
 ```bash
-.
-├── fis-conf.js
-├── page
-│   ├── index.tpl
-│   └── layout.tpl
-├── plugin
-└── widget
-    └── header
-        ├── header.css
-        ├── header.js
-        └── header.tpl
+$ tree iknow-scaffold-module
+iknow-scaffold-module
+    ├── fis-conf.js
+    ├── page
+    │   ├── index.tpl
+    │   └── layout.tpl
+    ├── plugin
+    └── widget
+        └── header
+            ├── header.css
+            ├── header.js
+            └── header.tpl
 ```
 
 
@@ -136,7 +137,17 @@ fis.config.set('namespace', {{-namespace ?-}});
 $ lights install pc-scaffold-module
 ```
 ###### 发布模板
-FIS提供了包组件管理平台lights，你可以方便的把包发不到lights上；
+
+FIS提供了包组件管理平台lights，你可以方便的把包发布到lights上；
+
+```bash
+$ cd iknow-scaffold-module
+$ lights init //要求安装lights
+...
+$ lights publish
+```
+done.
+
 脚手架内核提供了从lights下载包的方法；
 
 ```javascript
