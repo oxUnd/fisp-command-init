@@ -14,8 +14,8 @@ exports.usage = '<command> [options]';
 exports.desc = 'A awesome scaffold of fis';
 exports.register = function(commander) {
     var o_args = process.argv;
-
-    var scaffold = fis.require('scaffold', get_scaffold(o_args));
+    
+    var scaffold = require('fis-scaffold-' + get_scaffold(o_args));
 
     if (scaffold.command) {
         scaffold.command(commander);
@@ -40,7 +40,7 @@ exports.register = function(commander) {
                 fis.log.throw = true;
             }
 
-            scaffold = fis.require('scaffold', options.scaffold)(options);
+            scaffold = require('fis-scaffold-' + options.scaffold)(options);
             
             if (options.list) {
                 if (scaffold.list) {
@@ -187,7 +187,8 @@ function npm_install(comp) {
 }
 
 function check_dir(dir) {
-    if (fis.util.fs.existsSync(path.resolve(dir))) {
+    dir = path.resolve(dir);
+    if (fis.util.fs.existsSync() && process.cwd() != dir) {
         fis.log.error('the directory has already exist, the process will stop.');        
     }
 }
