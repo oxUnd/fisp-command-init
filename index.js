@@ -19,11 +19,13 @@ exports.register = function(commander) {
         .option('--with-plugin', 'if create a module, whether include `plugin`', Boolean, false)
         .option('--repos <url>', 'repository', String, 'http://lightjs.duapp.com')
         .option('--verbose', 'output verbose help', Boolean, false)
+        .option('--list [query]', 'list component from the repos')
         .action(function () {
 
             var args = Array.prototype.slice.call(arguments);
             var options = args.pop();
             var cmd = args.shift();
+            var colors = require('colors');
 
             if (options.verbose) {
                 fis.log.level = fis.log.L_ALL;
@@ -31,6 +33,14 @@ exports.register = function(commander) {
             }
 
             var scaffold = require('fis-scaffold-' + options.scaffold.trim())(options);
+
+            if (options.list) {
+                if (scaffold.list) {
+                    scaffold.list(options);
+                } else {
+                    fis.scaffold.list(options);
+                }
+            }
 
             switch(cmd) {
                 case 'module':
