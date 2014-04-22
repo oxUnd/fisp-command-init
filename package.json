@@ -1,6 +1,6 @@
 {
   "name": "fis-command-init",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "scaffold",
   "main": "index.js",
   "scripts": {
@@ -18,6 +18,7 @@
   "author": "fansekey",
   "license": "MIT",
   "dependencies": {
+      "colors": "*",
       "fis-repo-client": "*",
       "fis-scaffold-pc": "*",
       "prompt": "*"

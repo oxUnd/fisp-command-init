@@ -8,7 +8,6 @@
 #### 基本用法
 
 ```bash
-$ fis init -h
   Usage: init <command> [options]
 
   Commands:
@@ -23,6 +22,8 @@ $ fis init -h
     -d, --dir <name>           create to dir
     --with-plugin              if create a module, whether include `plugin`
     --repos <url>              repository
+    --verbose                  output verbose help
+    --list [query]             list component from the repos
 ```
 
 如上，脚手架支持创建一个模块（module）和widget（widget），其使用方法是；
