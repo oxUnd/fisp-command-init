@@ -15,11 +15,11 @@
 * [高级用法](#高级用法)
     * [模板](#模板)
     * [插件](#插件)
-    * [详细步骤](详细步骤)
-        * [制作模板](制作模板)
-            * [#mdoule模板](##mdoule模板)
-            * [#widget模板](##widget模板)
-            * [#全局变量](##全局变量)
+    * [详细步骤](#详细步骤)
+        * [制作模板](#制作模板)
+            * [#mdoule模板](#制作模板)
+            * [#widget模板](#制作模板)
+            * [#全局变量](#制作模板)
         * [发布模板](#发布模板)
         * [制作插件](#制作插件)
         * [发布插件](#发布插件)
@@ -50,7 +50,7 @@
 ##### 新建一个模块
 
 ```
-$ fis init module -d  common --with-plugin // common只是一个文件夹，可以是任何目录
+$ fis init module -d  common --with-plugin // common只是一个文件夹，可以是任何目录, --with-plugin意思是是否包含fis提供的smarty插件（fis-plus）
 or
 $ fis init module -d no-common // no-common只是一个文件夹，可以是任何目录
 ```
@@ -152,7 +152,7 @@ iknow-scaffold-module
 ```
 
 
-###### #widget模板
+###### widget模板
 
 widget模板中包含
 + widget.tpl
