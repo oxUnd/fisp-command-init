@@ -52,6 +52,22 @@ $ fis init widget -d header
 $ fis init
 ```
 
+##### 下载其他组件
+
+eg,
+
+下载modjs
+
+```bash
+$ fis init modjs
+```
+
+如果想看看还能下载那些包；
+
+```bash
+$ fis init --list
+```
+
 #### 高级用法
 这节主要说一下脚手架的定制，脚手架默认附带一份模板和插件，后面会具体说明`模板`和`插件`。
 
