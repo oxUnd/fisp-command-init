@@ -42,6 +42,8 @@ exports.register = function(commander) {
                 }
             }
 
+            check_dir(options.dir);
+
             switch(cmd) {
                 case 'module':
                     scaffold.module();
@@ -159,4 +161,10 @@ function npm_install(comp) {
         process.stdout.write(chunk.toString());
     });
 
+}
+
+function check_dir(dir) {
+    if (fis.util.fs.existsSync(path.resolve(dir))) {
+        fis.log.error('the directory has already exist, the process will stop.');        
+    }
 }
