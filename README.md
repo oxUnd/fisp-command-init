@@ -166,6 +166,11 @@ fis.scaffold.downlaod('组件名', dist, options, callback);
  */
 fis.scaffold.prompt(dir);
 ```
+还提供了一个mv接口，用来做文件或文件夹移动的；
+
+```javascript
+fis.scaffold.mv(from, to, include, exclude);
+```
 
 ###### 制作插件
 
