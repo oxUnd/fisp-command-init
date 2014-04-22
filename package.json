@@ -1,6 +1,6 @@
 {
   "name": "fis-command-init",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "scaffold",
   "main": "index.js",
   "scripts": {
@@ -18,10 +18,10 @@
   "author": "fansekey",
   "license": "MIT",
   "dependencies": {
-      "colors": "*",
+      "colors": "0.6.2",
       "fis-repo-client": "*",
       "fis-scaffold-pc": "*",
-      "prompt": "*"
+      "prompt": "0.2.12"
   },
   "bugs": {
     "url": "https://github.com/xiangshouding/fis-command-scf/issues"
