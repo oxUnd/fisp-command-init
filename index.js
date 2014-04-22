@@ -13,6 +13,14 @@ exports.name = 'init';
 exports.usage = '<command> [options]';
 exports.desc = 'A awesome scaffold of fis';
 exports.register = function(commander) {
+    var o_args = process.argv;
+
+    var scaffold = fis.require('scaffold', get_scaffold(o_args));
+
+    if (scaffold.command) {
+        scaffold.command(commander);
+    }
+
     commander
         .option('-s, --scaffold <scaffold>', '', String, 'pc')
         .option('-d, --dir <name>', 'create to dir', require('path').resolve, process.cwd())
@@ -32,8 +40,8 @@ exports.register = function(commander) {
                 fis.log.throw = true;
             }
 
-            var scaffold = require('fis-scaffold-' + options.scaffold.trim())(options);
-
+            scaffold = fis.require('scaffold', options.scaffold)(options);
+            
             if (options.list) {
                 if (scaffold.list) {
                     scaffold.list(options);
@@ -76,6 +84,21 @@ exports.register = function(commander) {
         .command('widget')
         .description('create a widget');        
 };
+
+function get_scaffold(args) {
+    var p_short = args.indexOf('-s');
+    var p = args.indexOf('--scaffold');
+
+    if (p_short != -1) {
+        return args[p_short+1];
+    }
+
+    if (p != -1) {
+        return args[p+1];
+    }
+
+    return 'pc';
+}
 
 //安装fis-conf.js里面配置的插件
 function init_env() {
