@@ -112,11 +112,11 @@ function init_env() {
         fis.util.map(modules, function (type, info) {
             if (['parser', 'preprocessor', 'postprocessor', 'test', 'lint', 'optimizer'].indexOf(type) != -1) {
                 fis.util.map(info, function (ext, reqs) {
-                    requires = fis.util.merge(requires, get_reqs(type, reqs));
+                    requires = requires.concat(get_reqs(type, reqs));
                 });
             } else if (['prepackager', 'packager', 'postpackager', 'spriter'].indexOf(type) != -1) {
                 var reqs = info;
-                requires = fis.util.merge(requires, get_reqs(type, reqs));
+                requires = requires.concat(get_reqs(type, reqs));
             }
         });
         var need_install = check_env(requires);
@@ -149,7 +149,7 @@ function get_reqs(type, reqs) {
     for (var i = 0, len = reqs.length; i < len; i++) {
         requires.push('fis-'+type+'-'+reqs[i].trim());
     }
-
+    
     return requires;
 }
 
