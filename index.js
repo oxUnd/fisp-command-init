@@ -17,18 +17,27 @@ exports.register = function(commander) {
     
     var scaffold = require('fis-scaffold-' + get_scaffold(o_args));
 
-    if (scaffold.command) {
-        scaffold.command(commander);
-    }
-
     commander
         .option('-s, --scaffold <scaffold>', '', String, 'pc')
         .option('-d, --dir <name>', 'create to dir', require('path').resolve, process.cwd())
         .option('--with-plugin', 'if create a module, whether include `plugin`', Boolean, false)
         .option('--repos <url>', 'repository', String, 'http://lightjs.duapp.com')
         .option('--verbose', 'output verbose help', Boolean, false)
-        .option('--list [query]', 'list component from the repos')
-        .action(function () {
+        .option('--list [query]', 'list component from the repos');
+
+    commander
+        .command('module')
+        .description('create a module');
+
+    commander
+        .command('widget')
+        .description('create a widget'); 
+    
+    if (scaffold.command) {
+        scaffold.command(commander);
+    }
+    
+    commander.action(function () {
 
             var args = Array.prototype.slice.call(arguments);
             var options = args.pop();
@@ -74,15 +83,7 @@ exports.register = function(commander) {
 
                     break;
             }
-        });
-
-    commander
-        .command('module')
-        .description('create a module');
-
-    commander
-        .command('widget')
-        .description('create a widget');        
+        });       
 };
 
 function get_scaffold(args) {
@@ -188,7 +189,7 @@ function npm_install(comp) {
 
 function check_dir(dir) {
     dir = path.resolve(dir);
-    if (fis.util.fs.existsSync() && process.cwd() != dir) {
+    if (fis.util.fs.existsSync(dir) && process.cwd() != dir) {
         fis.log.error('the directory has already exist, the process will stop.');        
     }
 }
