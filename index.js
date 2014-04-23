@@ -73,17 +73,19 @@ exports.register = function(commander) {
                         init_env();
                         return;
                     }
-                    
+
                     if (scaffold.download) {
                         //脚手架不用lights平台
                         scaffold.download(cmd, options);
+                    } else if (scaffold[cmd] && fis.util.is(scaffold[cmd], 'Function')) {
+                        scaffold[cmd](options);
                     } else {
                         fis.scaffold.download(cmd, options.dir, {url: options.repos});
                     }
 
                     break;
             }
-        });       
+        });
 };
 
 function get_scaffold(args) {
