@@ -57,6 +57,7 @@ exports.register = function(commander) {
                 } else {
                     fis.scaffold.list(options);
                 }
+                return;
             }
 
             check_dir(options.dir);
