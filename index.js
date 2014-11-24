@@ -184,10 +184,7 @@ function npm_install(comp) {
 
     var npm = spawn(cmd, ['install', comp, '-g'], {detach: true});
 
-    npm.stderr.on('data', function (chunk) {
-        process.stdout.write(chunk.toString());
-    });
-
+    npm.pipe(process.stderr);
 }
 
 function check_dir(dir) {
