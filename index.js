@@ -144,16 +144,26 @@ function check_env(requires) {
 }
 
 function get_reqs(type, reqs) {
+    if (fis.util.is(reqs, 'Function') || !reqs) {
+        return [];
+    }
+
     if (fis.util.is(reqs, 'String')) {
         reqs = reqs.split(',');
     }
 
     var requires = [];
+    reqs = reqs.filter(function (comp) {
+        if (fis.util.is(comp, 'String')) {
+            return true;
+        }
+        return false;
+    });
 
     for (var i = 0, len = reqs.length; i < len; i++) {
         requires.push('fis-'+type+'-'+reqs[i].trim());
     }
-    
+
     return requires;
 }
 
@@ -181,10 +191,16 @@ function get_conf() {
 function npm_install(comp) {
 
     var cmd = process.platform == 'win32' ? 'npm.cmd' : 'npm';
+    
+    console.log(cmd);
 
     var npm = spawn(cmd, ['install', comp, '-g'], {detach: true});
 
-    npm.pipe(process.stderr);
+    npm.stdout.pipe(process.stdout);
+    npm.stderr.pipe(process.stderr);
+    npm.on('error', function (e) {
+        throw e;
+    });
 }
 
 function check_dir(dir) {

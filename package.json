@@ -1,6 +1,6 @@
 {
-  "name": "fis-command-init",
-  "version": "0.0.15",
+  "name": "fisp-command-init",
+  "version": "0.1.1",
   "description": "scaffold",
   "main": "index.js",
   "scripts": {
